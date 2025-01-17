@@ -21,7 +21,7 @@ define('CANAIS_AO_VIVO','Canales en Vivo');
 define('AO_VIVO','En Vivo');
 
 
-define('MENU_TV_AO_VIVO','TV en Vivo');
+define('MENU_TV_AO_VIVO','MUY PRONTO TV EN VIVO');
 define('MENU_HOME','Inicio');
 define('MENU_SERIES','Series');
 define('MENU_RENOVAR','Renovar Suscripción');
