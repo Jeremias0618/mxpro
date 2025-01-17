@@ -1047,12 +1047,12 @@ blockquote footer {color:#fff;}
 
 .video-embed-box {
 	display:block;
-	margin-bottom:37px;
-	bottom:-1px;
-	margin-right: -20px;
-    margin-left: -19px;
+	margin-bottom:35px;
+	bottom:-2px;
+	margin-right: -19px;
+    margin-left: -18px;
 	border-radius: 8px 8px 0 0;
-    border-bottom: 34px solid #0d0d0d;
+    border-bottom: 10px solid #0d0d0d;
 }
 
 .registration .social-login .social-login-btn {
