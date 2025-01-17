@@ -25,22 +25,15 @@ $tipo = 'series';
       <?php include("inc/head.php"); ?>
       
       <?php if($_GET['player'] == 1 || $_GET['player'] == '') { ?>
-      <link href="assets/plugins_player/video-js.css" type="text/css" rel="stylesheet">
-      <link href="assets/plugins_player/videojs.css?v=1540876404" type="text/css" rel="stylesheet">
-      <link href="assets/plugins_player/videojs.airplay.css" type="text/css" rel="stylesheet">
-      <script src="assets/plugins_player/video.js"></script>
-      <script src="assets/plugins_player/videojs.airplay.js"></script>
+      <link rel="stylesheet" href="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css" type="text/css"/>
+      <script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>
       <?php } ?>
       <?php if($_GET['player'] == 2) { ?>
-      <link href="assets/plugins_player/video-js.css" type="text/css" rel="stylesheet">
-      <link href="assets/plugins_player/videojs.css?v=1540876404" type="text/css" rel="stylesheet">
-      <link href="assets/plugins_player/videojs.airplay.css" type="text/css" rel="stylesheet">
-      <script src="assets/plugins_player/video.js"></script>
-      <script src="assets/plugins_player/videojs.airplay.js"></script>
+      <script type="text/javascript" src="//cdn.jsdelivr.net/afterglow/latest/afterglow.min.js"></script>
       <?php } ?>
       <?php if($_GET['player'] == 3) { ?>
       <link rel="stylesheet" href="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css" type="text/css"/>
-   <script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>
+      <script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>
       <?php } ?>
       <?php if($_GET['player'] == 4) { ?>
       <script src="//cdn.jwplayer.com/libraries/DbXZPMBQ.js"></script>
@@ -107,8 +100,10 @@ $tipo = 'series';
          <video id="livevideo" style="width: 100%;height:650px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/mp4" /></video>
          <?php } ?>
         <?php if($_GET['player'] == 2) { ?>
-        <video id="livevideo" class="video-js vjs-16-9 vjs-big-play-centered" poster="<?php echo $img; ?>"></video>
-        <?php } ?> 
+         <video class="afterglow" id="livevideo" style="width:100%;" height="650">
+ <source type="video/mp4" src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" />
+ </video>
+         <?php } ?> 
         <?php if($_GET['player'] == 3) { ?>
         <video id="livevideo" style="width: 100%;height:650px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/mp4" /></video>
         <?php } ?>
@@ -150,7 +145,9 @@ $tipo = 'series';
           
           </div>
           
-                     <a href="serie_play.php?sessao=<?php echo $_GET['sessao']; ?>&stream=<?php echo $_GET['stream']; ?>&episodio=<?php echo $_GET['episodio']; ?>&temporada=<?php echo $_GET['temporada']; ?>&ext=<?php echo $_GET['ext']; ?>&proxid=<?php echo $_GET['proxid']; ?>&proxep=<?php echo $_GET['proxep']; ?>&serie=<?php echo $_GET['serie']; ?>&titulo=<?php echo $_GET['titulo']; ?>&duracao=<?php echo $_GET['duracao']; ?>&idserie=<?php echo $_GET['idserie']; ?>&plot=<?php echo $_GET['plot']; ?>&img=<?php echo $_GET['img']; ?>&player=3" class="btn <?php if($_GET['player'] == 3 || $_GET['player'] == '') { echo 'btn-primary'; } ?>">PLAYER 1</a>
+                     <a href="serie_play.php?sessao=<?php echo $_GET['sessao']; ?>&stream=<?php echo $_GET['stream']; ?>&episodio=<?php echo $_GET['episodio']; ?>&temporada=<?php echo $_GET['temporada']; ?>&ext=<?php echo $_GET['ext']; ?>&proxid=<?php echo $_GET['proxid']; ?>&proxep=<?php echo $_GET['proxep']; ?>&serie=<?php echo $_GET['serie']; ?>&titulo=<?php echo $_GET['titulo']; ?>&duracao=<?php echo $_GET['duracao']; ?>&idserie=<?php echo $_GET['idserie']; ?>&plot=<?php echo $_GET['plot']; ?>&img=<?php echo $_GET['img']; ?>&player=1" class="btn <?php if($_GET['player'] == 1 || $_GET['player'] == '') { echo 'btn-primary'; } ?>">PLAYER 1</a>
+
+
                     
                     
                     
@@ -278,12 +275,51 @@ foreach ($output['episodes'][$temporada] as $item){
       <?php include("inc/scripts.php"); ?>
       
       <?php if($_GET['player'] == 1 || $_GET['player'] == '') { ?>
-         <script type="text/javascript">
-      var streamsrc = "<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>";
-      var playerobj = window.playerobj = videojs("livevideo", {sources: {type: "video/mp4", src: streamsrc}, controls: true, autoplay: true, loop: false, language: "pt-br", languages: {pt: {LIVE: "AO VIVO", Fullscreen: "Tela inteira", Pause: "Pausar", Play: "Reproduzir", Mute: "Mudo", Unmute: "Ativar som"}}, notSupportedMessage: "Limite de telas simultâneas atingido. Por favor, encerre uma das transmissões, aguarde 1 minuto e atualize a página.", preload: "none", muted: false, controlBar: { fullscreenToggle: false, volumePanel: false }, plugins: { airplayButton: {} }});
-      playerobj.on('ended', function() { go('filmes.php?sessao=<?php echo $_GET['sessao']; ?>&id=<?php echo $idcategoria; ?>'); });
-     
-         </script>
+      <style>
+		[data-player] {
+		    position: relative;
+		    width: 100%;
+		    height: auto;
+		    margin: 0;    
+		}
+		[data-player] .container[data-container] {
+		    width: 100%;
+		    height: auto;
+		    position: relative;
+		}
+		[data-player] .media-control[data-media-control] {
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		}
+		[data-player] video {
+		    position: relative;
+		    display: block;
+		    width: 100%;
+		    height: auto;
+		}
+      </style>
+      <script>
+        var playerobj = new Clappr.Player(
+                    {
+                        source: "<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>",
+                        parentId: "#livevideo",
+                        autoPlay: true,
+                        height: 'auto',
+                        width: '100%',
+                        poster: "<?php echo $img; ?>",
+                        watermark: "assets/<?php echo $template; ?>/img/main-logo.png",
+       					watermarkLink: "#",
+       					position: 'bottom-right',
+                        events: {
+                            onEnded: function() {
+                                go("serie_play.php?sessao=<?php echo $_GET['sessao']; ?>&stream=<?php echo $_GET['proxid']; ?>&episodio=<?php echo $_GET['proxep']; ?>&temporada=<?php echo $_GET['temporada']; ?>&ext=<?php echo $_GET['ext']; ?>&proxid=<?php echo $_GET['proxid']; ?>&proxep=<?php echo $_GET['proxep']; ?>&serie=<?php echo $_GET['serie']; ?>&titulo=<?php echo $_GET['titulo']; ?>&duracao=<?php echo $_GET['duracao']; ?>&idserie=<?php echo $_GET['idserie']; ?>&plot=<?php echo $_GET['plot']; ?>&player=<?php echo isset($_GET['player']) ? $_GET['player']:'1'; ?>&img=<?php echo $_GET['img']; ?>&auto=1");
+                            }
+                        }
+                    }
+                );
+            </script>
      <?php } ?>
      
       <?php if($_GET['player'] == 2) { ?>
