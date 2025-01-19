@@ -97,7 +97,7 @@ $tipo = 'series';
         <?php } else { ?>
         
         <?php if($_GET['player'] == 1 || $_GET['player'] == '') { ?>
-         <video id="livevideo" style="width: 100%;height:650px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/mp4" /></video>
+         <video id="livevideo" style="width: 100%;height:510px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/mp4" /></video>
          <?php } ?>
         <?php if($_GET['player'] == 2) { ?>
          <video class="afterglow" id="livevideo" style="width:100%;" height="650">
