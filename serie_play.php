@@ -88,7 +88,7 @@ $tipo = 'series';
                         <!-- 16:9 aspect ratio -->
         <div class="embed-responsive embed-responsive-16by9 video-embed-box">
         
-        <?php if($exts == 'avi' || $exts == 'mkv') { ?>
+        <?php if($exts == 'avi' || $exts == 'avi') { ?>
         <center><br><br>
         <h4><?php echo ERROR_FORMATO_VIDEO; ?>: <?php echo $exts; ?></h4>
         <br><br>
@@ -97,15 +97,15 @@ $tipo = 'series';
         <?php } else { ?>
         
         <?php if($_GET['player'] == 1 || $_GET['player'] == '') { ?>
-         <video id="livevideo" style="width: 100%;height:510px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/mp4" /></video>
+         <video id="livevideo" style="width: 100%;height:510px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/webm" /></video>
          <?php } ?>
         <?php if($_GET['player'] == 2) { ?>
          <video class="afterglow" id="livevideo" style="width:100%;" height="650">
- <source type="video/mp4" src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" />
+ <source type="video/webm" src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" />
  </video>
          <?php } ?> 
         <?php if($_GET['player'] == 3) { ?>
-        <video id="livevideo" style="width: 100%;height:650px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/mp4" /></video>
+        <video id="livevideo" style="width: 100%;height:650px;" controls><source src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" type="video/webm" /></video>
         <?php } ?>
         <?php if($_GET['player'] == 4) { ?>
         <div id="jwplayer_wrapper">
@@ -125,7 +125,7 @@ $tipo = 'series';
        <?php } ?>
        <?php if($_GET['player'] == 5) { ?>
   <video class="afterglow" id="livevideo" style="width:100%;" height="650">
- <source type="video/mp4" src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" />
+ <source type="video/webm" src="<?php echo IP; ?>/<?php echo $tipo; ?>/<?php echo $user; ?>/<?php echo $pwd; ?>/<?php echo $id; ?>.<?php echo $exts; ?>" />
  </video>
        <?php } ?> 
        
